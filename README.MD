@@ -14,6 +14,11 @@ website:   http://domusto.com
 ## Tested with
  - `ls`
  - `aplay`
+
+## Installation
+```sh
+$ ./domusto.js plugin install basvdijk/domusto-shell
+```
  
 ## Configuration
 

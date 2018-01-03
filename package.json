@@ -1,0 +1,26 @@
+{
+    "name": "domusto-shell",
+    "version": "1.0.0",
+    "description": "Shell plugin for DOMUSTO home automation",
+    "main": "index.js",
+    "dependencies": {
+    },
+    "devDependencies": {},
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/basvdijk/domusto-shell.git"
+    },
+    "keywords": [
+      "domusto"
+    ],
+    "author": "Bas van Dijk",
+    "license": "UNLICENSED",
+    "bugs": {
+      "url": "https://github.com/basvdijk/domusto-shell/issues"
+    },
+    "homepage": "https://github.com/basvdijk/domusto-shell#readme"
+  }
+  

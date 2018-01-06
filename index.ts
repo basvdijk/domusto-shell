@@ -38,6 +38,44 @@ class DomustoShell extends DomustoPlugin {
 
     }
 
+    /**
+     * Executed when a signal is received for this plugin
+     *
+     * @param {Domusto.Signal} signal
+     * @memberof DomustoShell
+     */
+    onSignalReceivedForPlugin(signal: Domusto.Signal) {
+
+        if (!this._busy) {
+
+            let shellCommand = signal.data['shellCommand'];
+
+            this._busy = true;
+
+            if (shellCommand) {
+
+                childProcess.exec(shellCommand, (error, stdout, stderr) => {
+                    util.debug('error', error);
+                    util.debug('stdout', stdout);
+                    util.debug('stderr', stderr);
+
+                    this._busy = false;
+
+                });
+
+            } else {
+                util.error('No action defined in ', signal);
+            }
+        }
+
+    }
+
+    /**
+     * Executes a shell command
+     *
+     * @param {any} shellCommand
+     * @memberof DomustoShell
+     */
     runCommand(shellCommand) {
 
         if (!this._busy) {
@@ -57,39 +95,6 @@ class DomustoShell extends DomustoPlugin {
 
     }
 
-    outputCommand(device, command, onSucces) {
-
-        if (!this._busy) {
-
-            let invertedState = device.state === 'off' ? 'on' : 'off';
-            let shellCommand = device.protocol.actions[invertedState];
-
-            this._busy = true;
-
-            if (shellCommand) {
-
-                childProcess.exec(shellCommand, (error, stdout, stderr) => {
-                    util.debug('error', error);
-                    util.debug('stdout', stdout);
-                    util.debug('stderr', stderr);
-
-                    this._busy = false;
-
-                    if (onSucces) {
-                        onSucces({ state: invertedState });
-                    }
-                });
-
-            } else {
-                util.error('No action defined for', device.name, device.state === 'off' ? 'on' : 'off');
-            }
-        }
-
-    }
-
-    toString() {
-        return super.toString();
-    }
 }
 
 export default DomustoShell;

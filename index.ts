@@ -1,4 +1,3 @@
-import util from '../../util';
 import config from '../../config';
 
 // DOMUSTO
@@ -55,42 +54,17 @@ class DomustoShell extends DomustoPlugin {
             if (shellCommand) {
 
                 childProcess.exec(shellCommand, (error, stdout, stderr) => {
-                    util.debug('error', error);
-                    util.debug('stdout', stdout);
-                    util.debug('stderr', stderr);
+                    this.console.debug('error', error);
+                    this.console.debug('stdout', stdout);
+                    this.console.debug('stderr', stderr);
 
                     this._busy = false;
 
                 });
 
             } else {
-                util.error('No action defined in ', signal);
+                this.console.error('No action defined in ', signal);
             }
-        }
-
-    }
-
-    /**
-     * Executes a shell command
-     *
-     * @param {any} shellCommand
-     * @memberof DomustoShell
-     */
-    runCommand(shellCommand) {
-
-        if (!this._busy) {
-
-            this._busy = true;
-
-            childProcess.exec(shellCommand, (error, stdout, stderr) => {
-                util.debug('error', error);
-                util.debug('stdout', stdout);
-                util.debug('stderr', stderr);
-
-                this._busy = false;
-
-            });
-
         }
 
     }

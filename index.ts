@@ -35,6 +35,8 @@ class DomustoShell extends DomustoPlugin {
             website: 'http://domusto.com'
         });
 
+        this.console.header(`${pluginConfiguration.id} plugin ready`);
+
     }
 
     /**
@@ -53,19 +55,31 @@ class DomustoShell extends DomustoPlugin {
 
             if (shellCommand) {
 
-                childProcess.exec(shellCommand, (error, stdout, stderr) => {
-                    this.console.debug('error', error);
-                    this.console.debug('stdout', stdout);
-                    this.console.debug('stderr', stderr);
-
-                    this._busy = false;
-
-                });
+                this.executeCommand(shellCommand);
 
             } else {
                 this.console.error('No action defined in ', signal);
             }
         }
+
+    }
+
+    /**
+     * Run given shell command
+     *
+     * @param {any} shellCommand
+     * @memberof DomustoShell
+     */
+    executeCommand(shellCommand) {
+
+        childProcess.exec(shellCommand, (error, stdout, stderr) => {
+            this.console.debug('error', error);
+            this.console.debug('stdout', stdout);
+            this.console.debug('stderr', stderr);
+
+            this._busy = false;
+
+        });
 
     }
 

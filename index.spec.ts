@@ -3,7 +3,7 @@ import * as sinon from 'sinon';
 
 // DOMUSTO
 import DomustoShell from './';
-import { Domusto } from '../../domusto/DomustoInterfaces';
+import { Domusto } from '../../domusto/DomustoTypes';
 
 describe('PluginDomustoShell', () => {
 

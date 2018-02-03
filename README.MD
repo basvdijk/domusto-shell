@@ -8,6 +8,9 @@ version:   0.0.1
 website:   http://domusto.com
 ```
 
+## Features
+- [x] Execute shell command on DOMUSTO event
+
 ## Hardware needed
 - none
 
